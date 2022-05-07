@@ -14,7 +14,7 @@ export const errorHandler: ErrorRequestHandler = (
   console.log(error);
   if (error instanceof ValidationError) {
     let errors: ValidationErrors = {};
-    error.inner.forEach((err) => {
+    error.inner.forEach((err: any) => {
       errors[err.path] = err.errors;
     });
 
@@ -23,6 +23,6 @@ export const errorHandler: ErrorRequestHandler = (
   console.error(error);
 
   return response.status(500).json({
-    message: 'Internal server error',
+    message: 'Internal soerver error',
   });
 };
