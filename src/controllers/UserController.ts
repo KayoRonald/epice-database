@@ -1,52 +1,52 @@
 import { Request, Response } from 'express';
 // import * as Yup from 'yup';
 import knex from '../database/connection';
+import { IUSerRequest } from '../interface';
 
 export default {
   async index(req: Request, res: Response) {
-    const data = [
-      {
-        "id": 2938928392,
-        "name": "Kayo Ronald",
-        "curso": "3º informática",
-        "createdAt": "2021-08-07T19:32:03.807Z",
-        "updatedAt": "2021-08-07T19:32:03.807Z"
-      },{
-        "id": 2938928392,
-        "name": "Kayo Ronald",
-        "curso": "3º informática",
-        "createdAt": "2021-08-07T19:32:03.807Z",
-        "updatedAt": "2021-08-07T19:32:03.807Z"
-      },{
-        "id": 2938928392,
-        "name": "Kayo Ronald",
-        "curso": "2º informática",
-        "createdAt": "2021-08-07T19:32:03.807Z",
-        "updatedAt": "2021-08-07T19:32:03.807Z"
-      },
-    ]
-      return res
-        .status(200)
-        .json({ data: data});
-    },
-  
-  async create(req: Request, res: Response) {
-    const { name } = req.body;
-    console.log(name)
-      return res
-        .status(201)
-        .json({ data: "ok"});
+    const { page = 1 } = req.query;
+    const users = await knex('database_epice')
+    .from('database_epice')
+    .select('id','name', 'curso', 'created_at')
+      .orderBy('id')
+      .offset((Number(page) - 1) * 10);
+    return res
+      .status(200)
+      .json({ data: users});
   },
-  
+
+  async create(req: IUSerRequest, res: Response) {
+    const { name, email, curso } = req.body;
+    const data = {
+      name,
+      email,
+      curso
+    }
+    try {
+      const response = await knex('epice_user').insert(data);
+      console.log(response)
+      res.status(201).send()
+    } catch (error: any) {
+      console.log(error)
+    } finally {
+      knex.destroy().then((res) => {
+        console.log('res')
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  },
+
   async update(req: Request, res: Response) {
     return res
       .status(200)
-      .json({ data: "ok"});
+      .json({ data: "ok" });
   },
 
   async delete(req: Request, res: Response) {
     return res
       .status(200)
-      .json({ data: "ok"});
+      .json({ data: "ok" });
   },
 };
