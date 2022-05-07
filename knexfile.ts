@@ -5,12 +5,12 @@ export default {
   development: {
     client: 'mysql',
     connection: {
-      host: '',
-      user: '',
-      password:'',
-      database: '',
-  },
-    igrations: {
+      host: process.env.MYSQL_HOST,
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+    },
+    migrations: {
       tableName: 'knex_migrations_epice',
       directory: path.resolve(__dirname, 'src', 'database', 'migrations'),
     },
