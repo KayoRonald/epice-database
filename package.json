@@ -4,10 +4,11 @@
   "description": "Back-end do Epice",
   "main": "src/server.ts",
   "scripts": {
+    "start": "tsc && node ./dist/src/server.js",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "knex:migrate:make": "knex --knexfile src/database/knexfile.ts -x ts migrate:make",
-    "knex:migrate:latest": "knex --knexfile src/database/knexfile.ts migrate:latest",
-    "knex:migrate:rollback": "knex --knexfile src/database/knexfile.ts migrate:rollback"
+    "knex:migrate:make": "knex --knexfile src/models/knexfile.ts -x ts migrate:make",
+    "knex:migrate:latest": "knex --knexfile src/models/knexfile.ts migrate:latest",
+    "knex:migrate:rollback": "knex --knexfile src/models/knexfile.ts migrate:rollback"
   },
   "keywords": [],
   "author": "KayoRoanld",
