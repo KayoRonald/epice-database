@@ -9,7 +9,7 @@ Banco de dados do epice
 Tipos suportados: `PostgreSQL, CockroachDB, MSSQL, MySQL, MariaDB, SQLite3, Better-SQLite3, Oracle, e Amazon Redshift `
 
 ```ts
-client: 'mysql',
+client: 'mysql', //nome do pacote que foi instalado
 ```
 
 ## Conexão
@@ -68,6 +68,9 @@ export async function down(knex: Knex): Promise<void> {
 }
 ```
 
+
+
+
 Agora podemos executar o comando abaixo realizando uma migração e atualizando nosso banco de dados local:
 
 ```bash
@@ -101,3 +104,13 @@ Agora podemos executar o comando abaixo na raiz do nosso projeto para semear nos
 ```bash
 yarn knex seed:run
 ```
+
+
+<hr/>
+
+
+<p align="center">
+  <img src="https://walde.co/wp-content/uploads/2016/09/nodejs_logo.png" width="100" title="Nodejs">
+  <img src="https://277969009-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-Lf4a7JZE8Gwa4Y0EaRf%2Favatar.png?generation=1559220593217278&alt=media" width="100" alt="TypeScript" title="TypeScript">
+  <img src="https://iconape.com/wp-content/files/bl/347262/svg/knexjs-seeklogo.com.svg" width="100" alt="chakra" title="Knexjs"
+</p>
