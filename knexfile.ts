@@ -1,21 +1,22 @@
-import 'dotenv/config'
+// import 'dotenv/config'
+import config from './src/config/'
 import path from 'path';
 
 export default {
   development: {
     client: 'mysql',
     connection: {
-      host: process.env.MYSQL_HOST,
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
+      host: config.db.host,
+      user: config.db.user,
+      password: config.db.password,
+      database: config.db.database,
     },
     migrations: {
       tableName: 'knex_migrations_epice',
-      directory: path.resolve(__dirname, 'src', 'database', 'migrations'),
+      directory: path.resolve(__dirname, 'src', 'models', 'migrations'),
     },
     seeds: {
-      directory: path.resolve(__dirname, 'src', 'database', 'seeds'),
+      directory: path.resolve(__dirname, 'src', 'models', 'seeds'),
     },
   },
 };
