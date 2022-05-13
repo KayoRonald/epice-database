@@ -49,11 +49,6 @@ Vamos criar uma tabela de usuários e tarefas usando a ferramenta de linha de co
 yarn knex migrate:make nome_da_tabela
 ```
 
-Usando a especificação de chave sem um tamanho de chave, atráves do `unique`
-```ts
-table.unique(['email', 'id'])
-```
-
 ```ts
 import { Knex } from "knex";
 
@@ -63,7 +58,6 @@ export async function up(knex: Knex): Promise<void> {
     table.text('name').notNullable();
     table.text('email').notNullable();
     table.text('curso').notNullable();
-    table.unique(['email', 'id']);
     table.timestamp('created_at').defaultTo(knex.fn.now())
     table.timestamp('updated_at').defaultTo(knex.fn.now())
   })
