@@ -4,8 +4,9 @@ import path from 'path';
 
 export default {
   development: {
-    client: 'mysql',
+    client: 'mysql',//sqlite3
     connection: {
+      // filename: './database.db'
       host: config.db.host,
       user: config.db.user,
       password: config.db.password,
