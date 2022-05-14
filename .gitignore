@@ -3,12 +3,11 @@ node_modules
 custom
 *.log
 
-!ngrok.yml
+db.db
 
 .versions
 .idea
 dist
-
 
 cypress/screenshots
 .angular
