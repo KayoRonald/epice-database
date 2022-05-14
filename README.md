@@ -69,13 +69,17 @@ npm install
 
 **4. Faça a conexão do banco de dados na sua máquina**
 
-Você pode conectar localmente usando workbench ou outro serviço online
+Você pode conectar localmente usando workbench ou outro serviço online, ou
+colocar `NODE_ENV=development`. Assim, vai criar um arquivo na raiaz do projeto chamado de `db.db`
 
 ```.env
+# Ambiente de produção
 MYSQL_HOST=
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
+# Ambiente de desenvolvimento
+NODE_ENV=development
 ```
 
 **5. Rodar a migração para criar as tabelas**
