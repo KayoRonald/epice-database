@@ -2,7 +2,15 @@
     <strong>EPICE 💜</strong>
 </h1>
 
-Banco de dados do epice
+Query Builder
+Escrita:
+```sql
+knex('users').where('id', 1)
+```
+Resultado:
+```sql
+select * from `users` where `id` = 1
+```
 
 ## Escolhendo o banco
 
@@ -68,16 +76,17 @@ export async function down(knex: Knex): Promise<void> {
 }
 ```
 
-
-
-
-Agora podemos executar o comando abaixo realizando uma migração e atualizando nosso banco de dados local:
+Agora podemos executar o comando abaixo realizando uma migração:
 
 ```bash
 yarn knex migrate:latest
 ```
+Para desfazer toda nossa tabela, é só rodar a `migrate:rollback`
+```bash
+yarn knex migrate:rollback
+```
 
-### Colocando dados fakes
+### Seed (Colocando dados fakes)
 Para iniciar dados em nossa tabela, vamos rodar o `seed`, assim criamos um arquivo com alguns dados dentro
 ```bash
 yarn knex seed:make 01_users
