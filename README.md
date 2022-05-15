@@ -69,8 +69,7 @@ npm install
 
 **4. Faça a conexão do banco de dados na sua máquina**
 
-Você pode conectar localmente usando workbench ou outro serviço online, ou
-colocar `cross-env NODE_ENV=development` ou `production`. Assim, vai criar um arquivo na raiaz do projeto chamado de `db.db`. Caso queira rodar usando o yarn dev ou npm run dev, é só colocar `production`
+Você pode se conectar localmente usando uma ferramenta de manipulação de banco de dados visual ou um serviço online. Usando `yarn dev` ou `npm run dev`, a aplicação começará usando o `cross-env NODE_ENV=development`, ou seja, será conectado usando um arquivo que será criado na raiz do projeto chamado `db.db`. Para a visualização das colunas pode ser feita usando uma extensão do código vs chamada MySQL. Mas, você pode colocar em `production` e passar suas credenciais de conexão.
 
 ```json
 "scripts": {
@@ -79,16 +78,14 @@ colocar `cross-env NODE_ENV=development` ou `production`. Assim, vai criar um ar
   "test": "cross-env NODE_ENV=development jest",
 },
 ```
-Também pode ser passado no `.env`
-> NODE_ENV=production Ambiente de produção
-> NODE_ENV=development Ambiente de desenvolvimento
+NODE_ENV=production Ambiente de produção
+NODE_ENV=development Ambiente de desenvolvimento
 
 ```.env
 MYSQL_HOST=
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
-# NODE_ENV=
 ```
 
 **5. Rodar a migração para criar as tabelas**
@@ -107,12 +104,28 @@ yarn knex seed:run
 
 **7. Inicar nossa aplicação**
 
+Executando em ambiente de desenvolvimento:
+cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts
+
 ```bash
 yarn dev
+
 ```
+
 ```bash
 npm run dev
 ```
+Executando em ambiente de produção:
+cross-env NODE_ENV=production tsc && node ./dist/src/server.js
+
+```bash
+yarn start
+```
+
+```bash
+npm start
+```
+
 
 <hr/>
 
