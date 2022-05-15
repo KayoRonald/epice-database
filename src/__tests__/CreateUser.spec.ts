@@ -6,7 +6,7 @@ describe('create user', () => {
     const response = await request(app)
       .post('/epice').send({
         name: "Fulano",
-        email: "teste@gmail.com",
+        email: `teste@gmail.com`,
         curso: "informática"
       })
     expect(response.status).toBe(201);

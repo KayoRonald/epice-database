@@ -1,7 +1,5 @@
 import knex from "knex";
+import config from '../config/'
 import knexFile from "../../knexfile";
 
-const environment = 
-  process.env.NODE_ENV !== 'development' ? 'production' : 'development';
-console.log(environment)
-export default knex(knexFile[String(environment)]);
+export default knex(knexFile[String(config.environment)]);

@@ -18,6 +18,4 @@ export default routes
   .post('/epice', CreateUser.create)
   .put('/epice/:email/:name', UpdateName.update)
   .patch('/epice/:email/:curso', UpdateCurso.update)
-  .delete('/epice/:email', DeleteUser.delete);
-
-// export default routes;
+  .delete('/epice/:email', DeleteUser.delete)

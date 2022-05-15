@@ -10,4 +10,6 @@ export default {
     password: process.env.MYSQL_PASSWORD || "",
     database: process.env.MYSQL_DATABASE || "teste"
   },
+  environment:
+    process.env.NODE_ENV === 'development' ? 'development' : 'production',
 };
