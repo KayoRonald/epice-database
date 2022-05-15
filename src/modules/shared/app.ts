@@ -1,7 +1,8 @@
 import 'express-async-errors'
 import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors';
-import routes from './routes/routes';
+import Chalk from 'chalk'
+import routes from './routes/routes'
 import AppError from '../../middleware/AppError'
 
 const app = express()
@@ -17,10 +18,11 @@ app.use(
       return response.status(error.statusCode).json({
         status: 'error',
         message: error.message,
-      });
+      })
     }
     // eslint-disable-next-line
-    console.error(error);
+    console.log(Chalk.yellow(error.message))
+    console.error(Chalk.red(error))
     return response.status(500).json({
       status: 'error',
       message: error.message || 'Internal server error',
