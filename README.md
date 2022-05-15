@@ -42,7 +42,7 @@ Esse projeto foi feito utilizando as seguintes tecnologias:
 
 <br/>
 
-**1. Faça um clone do repositório ou Fork:**
+**1. Faça um clone do repositório:**
 
 ```bash 
   https://github.com/KayoRonald/epice-database
