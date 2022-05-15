@@ -7,11 +7,11 @@
 
 Esse projeto foi feito utilizando as seguintes tecnologias:
 
-| Tecnologias | Sites |
-| ------ | ------ |
-| Nodejs | https://nodejs.org/ |
-| Knex | http://knexjs.org/ |
-| TypeScript | https://www.typescriptlang.org/ |
+| Tecnologias | Sites                           |
+| ----------- | ------------------------------- |
+| Nodejs      | https://nodejs.org/             |
+| Knex        | http://knexjs.org/              |
+| TypeScript  | https://www.typescriptlang.org/ |
 
 
 # 🤔 **Como contribuir?**
@@ -70,16 +70,25 @@ npm install
 **4. Faça a conexão do banco de dados na sua máquina**
 
 Você pode conectar localmente usando workbench ou outro serviço online, ou
-colocar `NODE_ENV=development`. Assim, vai criar um arquivo na raiaz do projeto chamado de `db.db`
+colocar `cross-env NODE_ENV=development` ou `production`. Assim, vai criar um arquivo na raiaz do projeto chamado de `db.db`. Caso queira rodar usando o yarn dev ou npm run dev, é só colocar `production`
+
+```json
+"scripts": {
+  "start": "cross-env NODE_ENV=production tsc && node ./dist/src/server.js",
+  "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+  "test": "cross-env NODE_ENV=development jest",
+},
+```
+Também pode ser passado no `.env`
+> NODE_ENV=production Ambiente de produção
+> NODE_ENV=development Ambiente de desenvolvimento
 
 ```.env
-# Ambiente de produção
 MYSQL_HOST=
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
-# Ambiente de desenvolvimento
-NODE_ENV=development
+# NODE_ENV=
 ```
 
 **5. Rodar a migração para criar as tabelas**
