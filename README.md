@@ -105,6 +105,7 @@ yarn knex seed:run
 **7. Inicar nossa aplicação**
 
 Executando em ambiente de desenvolvimento:
+
 cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts
 
 ```bash
@@ -116,6 +117,7 @@ yarn dev
 npm run dev
 ```
 Executando em ambiente de produção:
+
 cross-env NODE_ENV=production tsc && node ./dist/src/server.js
 
 ```bash
