@@ -9,7 +9,7 @@ export class UpdateUserControllerName {
     const { email } = req.params
     const { name } = req.body
     const data = { name, email }
-    console.log(req.params)
+    console.log(data)
     const updateName = new UpdateUserServiceName();
 
     const schema = Yup.object().shape({

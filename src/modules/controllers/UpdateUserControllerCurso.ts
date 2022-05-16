@@ -8,8 +8,8 @@ export class UpdateUserControllerCurso {
   async update(req: IUSerRequest, res: Response) {
     const { email } = req.params;
     const { curso } = req.body
-    const data = { email }
-    console.log(req.params)
+    const data = { curso, email }
+    console.log(data)
 
     const updateCurso = new UpdateUserServiceCurso();
     const schema = Yup.object().shape({
