@@ -1,5 +1,5 @@
-import knex from "knex";
+import knex from 'knex'
 import config from '../config/'
-import knexFile from "../../knexfile";
+import knexFile from '../../knexfile'
 
-export default knex(knexFile[String(config.environment)]);
+export default knex(knexFile[String(config.environment)])

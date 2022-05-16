@@ -25,7 +25,7 @@ app.use(
     console.error(Chalk.red(error))
     return response.status(500).json({
       status: 'error',
-      message: error.message || 'Internal server error',
+      message: 'Internal server error',
     })
   },
 )

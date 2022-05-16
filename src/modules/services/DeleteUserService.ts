@@ -18,6 +18,6 @@ export default class DeleteUserService {
       throw new AppError(`Usuário não encontrado em nosso sistema.`, 404);
     }
     // knex.destroy()    
-    return users;
+    return users
   }
 }

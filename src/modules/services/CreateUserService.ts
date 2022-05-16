@@ -25,6 +25,6 @@ export default class CreateUserService {
     const response: any = await knex('database_epice').insert(data);
 
     // knex.destroy()    
-    return response;
+    return response
   }
 }

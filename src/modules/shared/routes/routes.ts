@@ -16,6 +16,6 @@ const UpdateCurso = new UpdateUserControllerCurso()
 export default routes
   .get('/epice', ListUser.handle)
   .post('/epice', CreateUser.create)
-  .put('/epice/:email/:name', UpdateName.update)
-  .patch('/epice/:email/:curso', UpdateCurso.update)
+  .put('/epice/:email', UpdateName.update)
+  .patch('/epice/:email', UpdateCurso.update)
   .delete('/epice/:email', DeleteUser.delete)
