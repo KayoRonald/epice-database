@@ -12,7 +12,7 @@
     "knex:migrate:latest": "knex --knexfile src/models/knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile src/models/knexfile.ts migrate:rollback"
   },
-  "keywords": [],
+  "keywords": ["crud"],
   "author": "KayoRoanld",
   "license": "MIT",
   "dependencies": {
