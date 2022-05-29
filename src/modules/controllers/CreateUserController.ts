@@ -2,7 +2,7 @@ import { Response } from 'express'
 import * as Yup from 'yup'
 import { IUSerRequest } from '../../interface'
 import AppError from '../../middleware/AppError'
-import  CreateUserService  from '../services/CreateUserService'
+import { createUserEpice } from '../services'
 
 export class CreateUserController {
   async create(req: IUSerRequest, res: Response) {
@@ -11,7 +11,6 @@ export class CreateUserController {
       email,
       curso
     } = req.body
-    const createUserEpice = new CreateUserService()
     const schema = Yup.object().shape({
       name: Yup.string().required('Campo obrigatório'),
       curso: Yup.string().required('Campo obrigatório'),

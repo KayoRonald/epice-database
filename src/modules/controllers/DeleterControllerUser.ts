@@ -2,12 +2,11 @@ import { Response } from 'express'
 import * as Yup from 'yup';
 import { IUSerRequest } from '../../interface'
 import AppError from '../../middleware/AppError';
-import DeleteUserService from '../services/DeleteUserService'
+import { deleteUserService } from '../services';
 
 export class DeleterControllerUser {
   async delete(req: IUSerRequest, res: Response) {
     const { email } = req.params
-    const deleteUserService = new DeleteUserService()
 
     const schema = Yup.object().shape({
       email: Yup.string().email('Email inválido!').required('Campo obrigatório'),

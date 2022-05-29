@@ -2,7 +2,7 @@ import { Response } from 'express'
 import * as Yup from 'yup'
 import { IUSerRequest } from '../../interface'
 import AppError from '../../middleware/AppError'
-import UpdateUserServiceName from '../services/UpdateUserServiceName'
+import { updateName } from '../services'
 
 export class UpdateUserControllerName {
   async update(req: IUSerRequest, res: Response) {
@@ -10,7 +10,6 @@ export class UpdateUserControllerName {
     const { name } = req.body
     const data = { name, email }
     console.log(data)
-    const updateName = new UpdateUserServiceName();
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),

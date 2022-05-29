@@ -2,7 +2,7 @@ import { Response } from 'express'
 import * as Yup from 'yup'
 import { IUSerRequest } from '../../interface'
 import AppError from '../../middleware/AppError'
-import UpdateUserServiceCurso from '../services/UpdateUserServiceCurso'
+import { updateCurso } from '../services';
 
 export class UpdateUserControllerCurso {
   async update(req: IUSerRequest, res: Response) {
@@ -11,7 +11,6 @@ export class UpdateUserControllerCurso {
     const data = { curso, email }
     console.log(data)
 
-    const updateCurso = new UpdateUserServiceCurso();
     const schema = Yup.object().shape({
       curso: Yup.string().required('Campo obrigatório'),
       email: Yup.string().email('Email inválido!').required('Campo obrigatório'),
