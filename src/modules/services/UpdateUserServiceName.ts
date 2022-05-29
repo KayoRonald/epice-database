@@ -1,4 +1,4 @@
-import knex from '../../database/connection'
+import knex from '../../connection/connection'
 import AppError from '../../middleware/AppError'
 
 interface User {
