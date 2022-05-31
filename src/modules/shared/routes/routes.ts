@@ -1,5 +1,11 @@
 import { Router } from 'express'
-import { CreateUser, DeleteUser, ListUser, UpdateCurso, UpdateName } from '../../controllers'
+import {
+  CreateUser,
+  DeleteUser,
+  ListUser,
+  UpdateCurso,
+  UpdateName,
+} from '../../controllers'
 
 const routes = Router()
 

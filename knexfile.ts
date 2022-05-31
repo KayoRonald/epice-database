@@ -1,3 +1,5 @@
+ /* eslint-disable */
+ 
 import config from "./src/config/";
 import path from "path";
 

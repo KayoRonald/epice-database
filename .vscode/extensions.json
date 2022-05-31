@@ -2,6 +2,7 @@
   "recommendations": [
     "cweijan.vscode-mysql-client2",
     "editorconfig.editorconfig",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
   ]
 }
