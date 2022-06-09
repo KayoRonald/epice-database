@@ -69,24 +69,26 @@ npm install
 
 **4. Faça a conexão do banco de dados na sua máquina**
 
-Você pode se conectar localmente usando uma ferramenta de manipulação de banco de dados visual ou um serviço online. Usando `yarn dev` ou `npm run dev`, a aplicação começará usando o `cross-env NODE_ENV=development`, ou seja, será conectado usando um arquivo que será criado na raiz do projeto chamado `db.db`. Para a visualização das colunas pode ser feita usando uma extensão do código vs chamada MySQL. Mas, você pode colocar em `production` e passar suas credenciais de conexão.
 
-```json
-"scripts": {
-  "start": "cross-env NODE_ENV=production tsc && node ./dist/src/server.js",
-  "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-  "test": "cross-env NODE_ENV=development jest",
-},
-```
-NODE_ENV=production Ambiente de produção
-NODE_ENV=development Ambiente de desenvolvimento
+Tabela de descrição sobre `NODE_ENV`
+
+| valores     | Descrição                       |
+| ----------- | ------------------------------- |
+| production  | Ambiente de produção            |
+| development | Ambiente de desenvolvimento     |
+
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
 ```.env
 MYSQL_HOST=
 MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
+NODE_ENV=
 ```
+
+Você pode se conectar localmente usando uma ferramenta de manipulação de banco de dados visual ou a partir de um arquivo. Usando o `NODE_ENV=production`, mas se colocar; `NODE_ENV=development`, será conectado usando um arquivo que será criado na raiz do projeto chamado `db.db`, depois de criar a migração. Para a visualização das colunas pode ser feita usando uma extensão do código vs code chamada MySQL, ou de SQL. Mas, você pode colocar em `production` e passar suas credenciais de conexão.
 
 **5. Rodar a migração para criar as tabelas**
 
@@ -94,9 +96,9 @@ MYSQL_PASSWORD=
 yarn knex migrate:latest
 ```
 
-**6. Rodar o seed:run**
+**6. Rodar o seed:run (opcional)**
 
-Agora podemos executar o comando abaixo na raiz do nosso projeto para semear nosso banco de dados
+Agora podemos executar o comando abaixo na raiz do nosso projeto para semear nosso banco de dados para testar
 
 ```bash
 yarn knex seed:run
@@ -105,8 +107,6 @@ yarn knex seed:run
 **7. Inicar nossa aplicação**
 
 Executando em ambiente de desenvolvimento:
-
-cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts
 
 ```bash
 yarn dev
@@ -118,10 +118,10 @@ npm run dev
 ```
 Executando em ambiente de produção:
 
-cross-env NODE_ENV=production tsc && node ./dist/src/server.js
+Para executar em ambiente de produção, é mecessario
 
 ```bash
-yarn start
+yarn build
 ```
 
 ```bash
@@ -132,8 +132,9 @@ npm start
 <hr/>
 
 
+
 <p align="center">
-  <img src="https://walde.co/wp-content/uploads/2016/09/nodejs_logo.png" width="100" title="Nodejs">
-  <img src="https://277969009-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-Lf4a7JZE8Gwa4Y0EaRf%2Favatar.png?generation=1559220593217278&alt=media" width="100" alt="TypeScript" title="TypeScript">
-  <img src="https://iconape.com/wp-content/files/bl/347262/svg/knexjs-seeklogo.com.svg" width="100" alt="chakra" title="Knexjs"
+  <img src="https://walde.co/wp-content/uploads/2016/09/nodejs_logo.png" width="100" title="Nodejs"/>
+  <img src="https://277969009-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-Lf4a7JZE8Gwa4Y0EaRf%2Favatar.png?generation=1559220593217278&alt=media" width="100" alt="TypeScript" title="TypeScript" />
+  <img src="https://iconape.com/wp-content/files/bl/347262/svg/knexjs-seeklogo.com.svg" width="100" alt="chakra" title="Knexjs" />
 </p>
