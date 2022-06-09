@@ -2,5 +2,7 @@
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "editor.fontSize": 17,
+  "editor.minimap.enabled": false,
 }
