@@ -4,7 +4,7 @@ custom
 *.log
 
 db.db
-
+CHANGELOG.md
 
 .versions
 .idea
