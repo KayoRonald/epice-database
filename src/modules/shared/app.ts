@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import Chalk from 'chalk'
 import routes from './routes/routes'
-import AppError from '../../middleware/AppError'
+import AppError from '@middleware/AppError'
 
 const app = express()
 

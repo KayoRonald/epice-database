@@ -1,5 +1,5 @@
-import knex from '../../../connection/connection'
-import AppError from '../../../middleware/AppError'
+import knex from '@connection/connection'
+import AppError from '@middleware/AppError'
 
 interface User {
   name: string
