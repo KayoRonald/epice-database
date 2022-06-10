@@ -4,16 +4,9 @@
   "description": "Back-end do Epice",
   "main": "src/server.ts",
   "scripts": {
-    "build": "babel ./ --extensions \".js,.ts\" --out-dir dist --ignore node_modules",
+    "build": "tsc",
     "start": "cross-env NODE_ENV=production node ./dist/src/server.js",
-    "dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules  src/server.ts",
-    "test": "cross-env NODE_ENV=development jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
-    "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix",
-    "type-check": "tsc --noEmit",
-    "knex:migrate:make": "knex --knexfile src/models/knexfile.ts -x ts migrate:make",
-    "knex:migrate:latest": "knex --knexfile src/models/knexfile.ts migrate:latest",
-    "knex:migrate:rollback": "knex --knexfile src/models/knexfile.ts migrate:rollback"
+    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "keywords": [
     "crud"
@@ -23,50 +16,17 @@
   "dependencies": {
     "chalk": "4.1.2",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.0",
-    "express": "^4.18.0",
-    "express-async-errors": "^3.1.1",
-    "knex": "^2.0.0",
-    "mysql": "^2.18.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "knex": "2.0.0",
     "sqlite3": "^5.0.8",
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.2",
-    "@babel/node": "^7.17.10",
-    "@babel/plugin-proposal-class-properties": "^7.17.12",
-    "@babel/plugin-proposal-decorators": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.17.12",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
-    "@types/jasmine": "^4.0.3",
-    "@types/jasmine-node": "^1.14.36",
-    "@types/jest": "^28.1.0",
-    "@types/node": "^17.0.29",
-    "@types/supertest": "^2.0.12",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.26.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "jasmine": "^4.1.0",
-    "jasmine-console-reporter": "^3.1.0",
-    "jasmine-node": "^3.0.0",
-    "nyc": "^15.1.0",
-    "prettier": "^2.6.2",
-    "supertest": "^6.2.3",
-    "ts-node-dev": "^1.1.8",
-    "tsconfig-paths": "^4.0.0",
-    "typescript": "^4.6.3"
-  },
-  "type": "module"
+    "@types/node": "^17.0.41",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  }
 }

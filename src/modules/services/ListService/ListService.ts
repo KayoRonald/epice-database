@@ -1,4 +1,4 @@
-import knex from '@connection/connection'
+import knex from '../../../connection/connection'
 
 type Users = {
   id: number;
