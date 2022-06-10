@@ -1,7 +1,7 @@
 import { Response } from 'express'
 import * as Yup from 'yup'
 import { IUSerRequest } from '../../../types'
-import AppError from '../../../middleware/AppError'
+import AppError from '@middleware/AppError'
 import { updateName } from '../../services'
 
 export class UpdateUserControllerName {
