@@ -10,7 +10,7 @@
     "lib": ["ES2015"],
     // "noEmit": true,
     /* Modules */
-    "module": "commonjs",
+    "module": "module",
     "rootDir": ".",
     // "moduleResolution": "node",
     "baseUrl": "./", 
