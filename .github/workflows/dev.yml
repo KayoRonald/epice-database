@@ -29,9 +29,12 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: deploy-to-production
     steps:
-      - uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          node-version: 16.x
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
       - run: echo "Deploy"
