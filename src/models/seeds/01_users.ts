@@ -1,6 +1,6 @@
 import { Knex } from 'knex'
 
-export async function seed(knex: Knex): Promise<void> {
+export async function seed (knex: Knex): Promise<void> {
   // Deletes ALL existing entries
   await knex('database_epice').del()
 
@@ -9,17 +9,17 @@ export async function seed(knex: Knex): Promise<void> {
     {
       name: 'João Paulo',
       email: 'kayo1@gmail.com',
-      curso: 'info',
+      curso: 'info'
     },
     {
       name: 'João Paulo',
       email: 'kayo2@gmail.com',
-      curso: 'info',
+      curso: 'info'
     },
     {
       name: 'João Paulo',
       email: 'kay3@gmail.com',
-      curso: 'info',
-    },
+      curso: 'info'
+    }
   ])
 }

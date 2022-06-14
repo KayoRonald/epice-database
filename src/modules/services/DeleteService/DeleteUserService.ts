@@ -6,8 +6,7 @@ type User = {
 };
 
 export default class DeleteUserService {
-  // eslint-disable-next-line
-  public async execute({ email }: User): Promise<User> {
+  public async execute ({ email }: User): Promise<User> {
     const users = await knex('database_epice')
       .from('database_epice')
       .where({ email })

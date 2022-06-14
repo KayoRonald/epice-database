@@ -15,7 +15,6 @@ export interface IUSerRequest extends Request {
     mensagem?: string;
     curso: string;
   }
-  // eslint-disable-next-line
   params: {
     name: string;
     email: string;

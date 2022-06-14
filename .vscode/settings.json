@@ -5,4 +5,7 @@
   },
   "editor.fontSize": 17,
   "editor.minimap.enabled": false,
+  "files.exclude": {
+   "node_modules": true
+  }
 }

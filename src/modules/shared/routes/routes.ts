@@ -4,7 +4,7 @@ import {
   DeleteUser,
   ListUser,
   UpdateCurso,
-  UpdateName,
+  UpdateName
 } from '../../controllers'
 
 const routes = Router()
