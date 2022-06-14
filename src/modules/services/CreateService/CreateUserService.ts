@@ -8,7 +8,6 @@ type User = {
 };
 
 export default class CreateUserService {
-  // eslint-disable-next-line
   public async execute ({ name, email, curso }: User): Promise<User> {
     const data = {
       name,

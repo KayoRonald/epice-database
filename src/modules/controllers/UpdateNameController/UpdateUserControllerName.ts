@@ -5,7 +5,7 @@ import AppError from '@middleware/AppError'
 import { updateName } from '../../services'
 
 export class UpdateUserControllerName {
-  async update(req: IUSerRequest, res: Response) {
+  async update (req: IUSerRequest, res: Response) {
     const { email } = req.params
     const { name } = req.body
     const data = { name, email }
@@ -13,12 +13,12 @@ export class UpdateUserControllerName {
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),
-      email: Yup.string().email('Email inválido!').required(),
+      email: Yup.string().email('Email inválido!').required()
     })
 
     try {
       await schema.validate(data, {
-        abortEarly: false,
+        abortEarly: false
       })
     } catch (error: any) {
       throw new AppError(error.message)
@@ -27,7 +27,7 @@ export class UpdateUserControllerName {
 
     return res.status(201).json({
       success: true,
-      message: 'Atualização feita com sucesso!',
+      message: 'Atualização feita com sucesso!'
     })
   }
 }

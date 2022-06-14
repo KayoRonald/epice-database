@@ -7,8 +7,7 @@ interface User {
 }
 
 export default class UpdateUserServiceCurso {
-  // eslint-disable-next-line
-  public async execute({ email, curso }: User): Promise<User> {
+  public async execute ({ email, curso }: User): Promise<User> {
     const users = await knex('database_epice')
       .from('database_epice')
       .update<User>({ curso })

@@ -16,7 +16,7 @@ app.use(
     if (error instanceof AppError) {
       return response.status(error.statusCode).json({
         status: 'error',
-        message: error.message,
+        message: error.message
       })
     }
     // eslint-disable-next-line
@@ -24,7 +24,7 @@ app.use(
     console.error(Chalk.red(error))
     return response.status(500).json({
       status: 'error',
-      message: 'Internal server error',
+      message: 'Internal server error'
     })
   }
 )

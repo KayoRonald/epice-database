@@ -5,7 +5,7 @@ import AppError from '@middleware/AppError'
 import { updateCurso } from '../../services'
 
 export class UpdateUserControllerCurso {
-  async update(req: IUSerRequest, res: Response) {
+  async update (req: IUSerRequest, res: Response) {
     const { email } = req.params
     const { curso } = req.body
     const data = { curso, email }
@@ -15,12 +15,12 @@ export class UpdateUserControllerCurso {
       curso: Yup.string().required('Campo obrigatório'),
       email: Yup.string()
         .email('Email inválido!')
-        .required('Campo obrigatório'),
+        .required('Campo obrigatório')
     })
 
     try {
       await schema.validate(data, {
-        abortEarly: false,
+        abortEarly: false
       })
     } catch (error: any) {
       throw new AppError(error.message)
@@ -30,7 +30,7 @@ export class UpdateUserControllerCurso {
 
     return res.status(201).json({
       success: true,
-      message: 'Atualização feita com sucesso!',
+      message: 'Atualização feita com sucesso!'
     })
   }
 }
