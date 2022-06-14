@@ -4,9 +4,9 @@
   "description": "Back-end do Epice",
   "main": "src/server.ts",
   "scripts": {
-    "build": "babel ./ --extensions \".js,.ts\" --out-dir dist --ignore node_modules",
+    "build": "tsc",
     "start": "node ./dist/src/server.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules  src/server.ts",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "type-check": "tsc --noEmit"
