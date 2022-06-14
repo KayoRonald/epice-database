@@ -4,9 +4,6 @@
 name: CI para realizar teste
   
 on:
-  push:
-    branches: [main]
-
   pull_request:
     paths-ignore:
         - '**.md'
