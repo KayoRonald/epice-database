@@ -12,5 +12,5 @@ export default {
     // port: process.env.MYSQL_PORT || ''
   },
   environment:
-    process.env.NODE_ENV !== 'development' ? 'development' : 'production'
+    process.env.NODE_ENV === 'production' ? 'production' : 'development'
 }
