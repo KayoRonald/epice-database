@@ -5,11 +5,13 @@
   "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/src/server.js",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "cross-env NODE_ENV=production node ./dist/src/server.js",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "migrate:latest": "cross-env NODE_ENV=production knex --knexfile src/models/knexfile.ts migrate:latest",
+    "migrate:rollback": "cross-env NODE_ENV=production knex --knexfile src/models/knexfile.ts migrate:rollback"
   },
   "keywords": [
     "crud",
@@ -21,6 +23,7 @@
   "dependencies": {
     "chalk": "4.1.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",

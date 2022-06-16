@@ -23,11 +23,11 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
 
-  deploy-production:
+  deploy-heroku:
     needs: test-ci
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    concurrency: deploy-to-production
+    concurrency: deploy-to-heroku
     steps:
       - name: Use Node.js 10.x
         uses: actions/setup-node@v2
@@ -37,4 +37,21 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-      - run: echo "Deploy"
+      - run: echo "Deploy Heroku"
+  deploy-railway:
+    needs: test-ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency: deploy-to-railway
+    steps:
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
