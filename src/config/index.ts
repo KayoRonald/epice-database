@@ -9,10 +9,8 @@ export default {
     user: process.env.MYSQL_USER || 'root',
     password: process.env.MYSQL_PASSWORD || '',
     database: process.env.MYSQL_DATABASE || 'teste'
+    // port: process.env.MYSQL_PORT || ''
   },
   environment:
-    process.env.NODE_ENV ===
-    'development'
-      ? 'development'
-      : 'production'
+    process.env.NODE_ENV !== 'development' ? 'development' : 'production'
 }
