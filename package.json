@@ -5,8 +5,8 @@
   "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
-    "start": "cross-env NODE_ENV=production node ./dist/src/server.js",
-    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "node ./dist/src/server.js",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "type-check": "tsc --noEmit",
