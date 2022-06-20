@@ -1,0 +1,216 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+    "title": "Api Epice",
+    "description": "Api do evento de informática do IFPB/Campus Picuí",
+    "version": "1.0.0"
+  },
+  "servers":[
+    {
+      "url": "http://localhost:3333/v1/",
+      "description": "Api de teste"
+    }
+  ],
+  "paths":{
+    "/epice":{
+      "get":{
+        "summary": "Listagem de usuários",
+        "description": "Essa rota é responsável por listar todos os usuários",
+        "responses":{
+          "404":{
+            "description": "Sem registro de cadastro"
+          },
+          "500":{
+            "description": "error interno"
+          },
+          "201":{
+            "description": "Sucesso",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "$ref": "#components/schemas/CreateUser"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post":{
+        "summary": "Cadastro de usuários",
+        "description": "Essa rota é responsável por cadastrar novos usuários",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+               "$ref": "#components/schemas/CreateUser"
+              },
+              "examples":{
+                "createUsers":{
+                  "value":{
+                    "name": "Kaique",
+                    "email": "joaozinho22@gmail.com",
+                    "curso": "Informática"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "404":{
+            "description": "Usuário não encontrado"
+          },
+          "400":{
+            "description": "Falha"
+          },
+          "201":{
+            "description": "Sucesso",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "$ref": "#components/schemas/CreateUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/epice/name/{email}":{
+      "put":{
+        "summary": "Atualizar o nome do usuário",
+        "description": "Essa rota é responsável por editar o nome do usuário",
+        "parameters":[{
+          "in": "path",
+          "name": "email",
+          "description": "Email que foi cadastrado",
+          "required": true
+        }],
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+               "$ref": "#components/schemas/updateName"
+              },
+              "examples":{
+                "updateName":{
+                  "value":{
+                    "name": "George Fulano da Silva Jr"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "404":{
+            "description": "Esse email não está registrado"
+          },
+          "201":{
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/epice/curso/{email}":{
+     "put":{
+      "summary": "Atualizar o curso do usuário",
+      "description": "Essa rota é responsável por editar o curso do usuário",
+      "parameters":[{
+        "in": "path",
+        "name": "email",
+        "description": "Email que foi cadastrado",
+        "required": true
+       }
+      ],
+      "requestBody":{
+        "content":{
+          "application/json":{
+            "schema":{
+             "$ref": "#components/schemas/updateCurso"
+            },
+            "examples":{
+              "updateCurso":{
+                "value":{
+                  "curso": "Geologia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses":{
+        "400":{
+          "description": "Ocorreu algum problema!"
+        },
+        "404":{
+          "description": "Esse email não está registrado"
+        },
+        "201":{
+          "description": "ok"
+        }
+      }
+     }
+    },
+    "/epice/{email}":{
+      "delete":{
+        "summary": "Apagar o registro de um usuário",
+        "description": "Essa rota é responsável por apagar um usuário do evento",
+        "parameters":[{
+          "in": "path",
+          "name": "email",
+          "description": "Email que foi cadastrado",
+          "required": true
+        }
+      ],
+        "responses":{
+          "400":{
+            "description": "Ocorreu algum problema!"
+          },
+          "404":{
+            "description": "Esse email não está registrado"
+          },
+          "201":{
+            "description": "ok"
+          }
+        }
+      }
+    }
+  },
+  "components":{
+    "schemas":{
+      "CreateUser":{
+        "type": "object",
+        "properties":{
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "curso": {
+            "type": "string"
+          }
+        }
+      },
+      "updateName":{
+        "type": "object",
+        "properties":{
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "updateCurso":{
+        "type": "object",
+        "properties":{
+          "curso": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
