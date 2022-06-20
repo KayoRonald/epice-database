@@ -20,6 +20,17 @@ export default {
       directory: path.resolve(__dirname, 'src', 'models', 'seeds')
     }
   },
+  staging: {
+    client: 'pg',
+    connection: process.env.POSTGRES_URL,
+    migrations: {
+      tableName: 'knex_migrations_epice',
+      directory: path.resolve(__dirname, 'src', 'models', 'migrations')
+    },
+    seeds: {
+      directory: path.resolve(__dirname, 'src', 'models', 'seeds')
+    }
+  },
   production: {
     client: 'mysql',
     connection: {
