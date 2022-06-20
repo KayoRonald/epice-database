@@ -3,6 +3,7 @@
     "cweijan.vscode-mysql-client2",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "CoenraadS.bracket-pair-colorizer"
   ]
 }

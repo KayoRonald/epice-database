@@ -1,5 +1,6 @@
 {
   "eslint.format.enable": true,
+  "material-icon-theme.folders.color": "#ef5350",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
