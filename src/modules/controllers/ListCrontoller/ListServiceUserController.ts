@@ -7,7 +7,7 @@ export class ListServiceUserController {
     return res.status(String(result).length ? 201 : 404).json({
       message: String(result).length
         ? result
-        : 'Não tem nenhum usuario cadastrado'
+        : 'Ops... lamentamos, mas nenhum usuário foi registrado! Seja o primeiro a se registra-se'
     })
   }
 }

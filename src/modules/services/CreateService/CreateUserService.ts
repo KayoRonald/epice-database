@@ -20,7 +20,7 @@ export default class CreateUserService {
       .where({ email })
 
     if (users.length === 1) {
-      throw new AppError('Email já cadastrado')
+      throw new AppError('Esse endereço de email já está em uso')
     }
     const response = await knex('database_epice').insert<User>(data)
 

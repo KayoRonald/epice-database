@@ -1,22 +1,15 @@
 import { Response } from 'express'
-import * as Yup from 'yup'
 import { IUSerRequest } from '../../../types'
 import AppError from '../../../middleware/AppError'
 import { createUserEpice } from '../../services'
+import { createUserValidate } from '../../../Yup/yup'
 
 export class CreateUserController {
   async create (req: IUSerRequest, res: Response) {
     const { name, email, curso } = req.body
-    const schema = Yup.object().shape({
-      name: Yup.string().required('Campo obrigatório'),
-      curso: Yup.string().required('Campo obrigatório'),
-      email: Yup.string()
-        .email('Email inválido!')
-        .required('Campo obrigatório')
-    })
 
     try {
-      await schema.validate(
+      await createUserValidate.validate(
         { name, email, curso },
         {
           abortEarly: false

@@ -1,8 +1,8 @@
 import { Response } from 'express'
-import * as Yup from 'yup'
 import { IUSerRequest } from '../../../types'
 import AppError from '../../../middleware/AppError'
 import { updateName } from '../../services'
+import { updateNameValidate } from '../../../Yup/yup'
 
 export class UpdateUserControllerName {
   async update (req: IUSerRequest, res: Response) {
@@ -11,13 +11,8 @@ export class UpdateUserControllerName {
     const data = { name, email }
     console.log(data)
 
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      email: Yup.string().email('Email inválido!').required()
-    })
-
     try {
-      await schema.validate(data, {
+      await updateNameValidate.validate({ email, name }, {
         abortEarly: false
       })
     } catch (error: any) {

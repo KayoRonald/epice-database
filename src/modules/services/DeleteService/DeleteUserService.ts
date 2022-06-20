@@ -7,6 +7,7 @@ type User = {
 
 export default class DeleteUserService {
   public async execute ({ email }: User): Promise<User> {
+    console.log('controller:' + email)
     const users = await knex('database_epice')
       .from('database_epice')
       .where({ email })

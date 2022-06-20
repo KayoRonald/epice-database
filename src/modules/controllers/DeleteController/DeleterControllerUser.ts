@@ -7,17 +7,15 @@ import { deleteUserService } from '../../services'
 export class DeleterControllerUser {
   async delete (req: IUSerRequest, res: Response) {
     const { email } = req.params
-
     const schema = Yup.object().shape({
-      email: Yup.string()
-        .email('Email inválido!')
-        .required('Campo obrigatório')
+      email: Yup.string().email('Email inválido!').required('Campo obrigatório')
     })
 
     try {
-      await schema.validate(email, {
+      const data = await schema.validate({ email }, {
         abortEarly: false
       })
+      console.log(data)
     } catch (error: any) {
       throw new AppError(error.message)
     }
