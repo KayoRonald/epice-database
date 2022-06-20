@@ -4,14 +4,16 @@ import {
   DeleteUser,
   ListUser,
   UpdateCurso,
-  UpdateName
+  UpdateName,
+  ListSpeaker
 } from '../../controllers'
 
 const routes = Router()
 
 export default routes
+  .get('/speaker', ListSpeaker.handle)
   .get('/epice', ListUser.handle)
   .post('/epice', CreateUser.create)
-  .put('/epice/:email', UpdateName.update)
-  .patch('/epice/:email', UpdateCurso.update)
+  .put('/epice/name/:email', UpdateName.update)
+  .put('/epice/curso/:email', UpdateCurso.update)
   .delete('/epice/:email', DeleteUser.delete)
