@@ -1,9 +1,9 @@
 import config from './src/config/'
 import path from 'path'
 
-// interface KnexConfig {
-//   [key: string]: object;
-// };
+interface KnexConfig {
+  [key: string]: object;
+};
 
 export default {
   development: {
@@ -50,4 +50,4 @@ export default {
       directory: path.resolve(__dirname, 'src', 'models', 'seeds')
     }
   }
-} as any
+} as KnexConfig
