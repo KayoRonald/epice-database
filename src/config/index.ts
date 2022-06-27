@@ -1,4 +1,5 @@
-import 'dotenv/config'
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default {
   app: {
@@ -11,5 +12,5 @@ export default {
     database: process.env.MYSQL_DATABASE || 'teste'
   },
   environment:
-    process.env.NODE_ENV === 'production' ? 'production' : 'development'
+    process.env.NODE_ENV
 }
