@@ -1,36 +1,23 @@
 import 'express-async-errors'
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import cors from 'cors'
-import Chalk from 'chalk'
+import helmet from 'helmet'
 import swaggerUi from 'swagger-ui-express'
-// import * as basicAuth from 'express-basic-auth'
 import routes from './routes/routes'
 import swaggerDocs from '../../docs/swagger.json'
-import AppError from '../../middleware/AppError'
+import { NotFoundException } from '../../middleware/error/AppError'
+import errorHandler from '../../middleware/handler/handler'
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(helmet())
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.use('/v1', routes)
-
-app.use(
-  (error: Error, request: Request, response: Response, _: NextFunction) => {
-    if (error instanceof AppError) {
-      return response.status(error.statusCode).json({
-        status: 'error',
-        message: error.message
-      })
-    }
-    // eslint-disable-next-line
-    console.log(Chalk.yellow(error.message))
-    console.error(Chalk.red(error))
-    return response.status(500).json({
-      status: 'error',
-      message: 'Internal server error'
-    })
-  }
-)
+app.all('*', () => {
+  throw new NotFoundException('O servidor não encontrou nada que corresponda ao Request-URI.')
+})
+app.use(errorHandler)
 
 export default app

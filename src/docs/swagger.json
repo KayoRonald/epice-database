@@ -15,7 +15,7 @@
     "/epice":{
       "get":{
         "summary": "Listagem de usuários",
-        "description": "Essa rota é responsável por listar todos os usuários",
+        "description": "Rota para cadastrar usuários",
         "responses":{
           "404":{
             "description": "Sem registro de cadastro"
@@ -24,7 +24,7 @@
             "description": "error interno"
           },
           "201":{
-            "description": "Sucesso",
+            "description": "ok",
             "content":{
               "application/json":{
                 "schema":{
