@@ -1,5 +1,5 @@
 import knex from '../../../connection/connection'
-import AppError from '../../../middleware/AppError'
+import { BadRequestException } from '../../../middleware/'
 
 type User = {
   name: string;
@@ -15,16 +15,13 @@ export default class CreateUserService {
       curso
     }
     // Verificando se o email já está registrado
-    const users: any = await knex('database_epice')
-      .from<User>('database_epice')
+    const users: any = await knex<User>('database_epice')
       .where({ email })
 
     if (users.length === 1) {
-      throw new AppError('Esse endereço de email já está em uso')
+      throw new BadRequestException('Esse endereço de email já está em uso')
     }
     const response = await knex('database_epice').insert<User>(data)
-
-    // knex.destroy()
     return response
   }
 }

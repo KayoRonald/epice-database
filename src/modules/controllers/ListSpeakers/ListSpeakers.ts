@@ -1,13 +1,15 @@
 import { Request, Response } from 'express'
+import { NotFoundException } from '../../../middleware/error/AppError'
 import { speakersService } from '../../services'
 
 export class ListSpeakers {
   async handle (req: Request, res: Response) {
     const result = await speakersService.execute()
-    return res.status(String(result).length ? 201 : 404).json({
-      message: String(result).length
-        ? result
-        : 'Nenhum palestrante foi regisrtado :/'
-    })
+    if (String(result).length) {
+      return res.status(201).json({
+        message: result
+      })
+    }
+    throw new NotFoundException('Nenhum palestrante foi regisrtado :/')
   }
 }
