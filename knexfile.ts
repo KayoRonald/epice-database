@@ -1,12 +1,13 @@
 import config from './src/config/'
 import path from 'path'
 
-interface KnexConfig {
-  [key: string]: object;
-};
+// interface KnexConfig {
+//   [key: string]: object;
+// };
 
 export default {
   development: {
+    name: 'sqlite',
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
@@ -21,6 +22,7 @@ export default {
     }
   },
   staging: {
+    name: 'postgresql',
     client: 'pg',
     connection: process.env.POSTGRES_URL,
     migrations: {
@@ -32,6 +34,7 @@ export default {
     }
   },
   production: {
+    name: 'MySql',
     client: 'mysql',
     connection: {
       host: config.db.host,
@@ -47,4 +50,4 @@ export default {
       directory: path.resolve(__dirname, 'src', 'models', 'seeds')
     }
   }
-} as KnexConfig
+} as any
