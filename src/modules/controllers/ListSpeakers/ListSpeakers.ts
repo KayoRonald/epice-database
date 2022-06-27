@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
 import { NotFoundException } from '../../../middleware/error/AppError'
-import { listUserEpice } from '../../services'
+import { speakersService } from '../../services'
 
-export class ListServiceUserController {
+export class ListSpeakers {
   async handle (req: Request, res: Response) {
-    const result = await listUserEpice.execute()
+    const result = await speakersService.execute()
     if (String(result).length) {
       return res.status(201).json({
         message: result

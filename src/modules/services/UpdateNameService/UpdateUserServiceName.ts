@@ -1,5 +1,5 @@
 import knex from '../../../connection/connection'
-import AppError from '../../../middleware/AppError'
+import { NotFoundException } from '../../../middleware/'
 
 interface User {
   name: string
@@ -8,15 +8,15 @@ interface User {
 }
 
 export default class UpdateUserServiceName {
-  public async execute ({ email, name }: User): Promise<void> {
-    const users = await knex('database_epice')
-      .from('database_epice')
-      .update({ name })
+  public async execute ({ email, name }: User): Promise<User> {
+    const users: User = await knex('database_epice')
+      .update<User>({ name })
       .where({ email })
 
-    if (users === 0) {
-      throw new AppError('Esse email não está registrado', 404)
+    if (!users) {
+      throw new NotFoundException('Esse usuário não está registrado')
     }
-    // knex.destroy()
+
+    return users
   }
 }

@@ -1,5 +1,6 @@
 {
   "eslint.format.enable": true,
+  "material-icon-theme.folders.color": "#ef5350",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -7,5 +8,8 @@
   "editor.minimap.enabled": false,
   "files.exclude": {
    "node_modules": true
+  },
+  "material-icon-theme.folders.associations": {
+    "migrations": "../../../../icons/folder-migration"
   }
 }
