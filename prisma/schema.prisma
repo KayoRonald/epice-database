@@ -1,0 +1,58 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  role       String     @default("admin")
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+
+  @@map("admin")
+}
+
+model Speakers {
+  id          String @id @default(uuid())
+  photo       String
+  name        String
+  email       String
+  password    String
+  occupation  String
+  description String
+  instagram   String
+  linkedin    String
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+
+  @@map("speakers")
+}
+
+model Users {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+
+  Courses   Courses? @relation(fields: [coursesId], references: [name])
+  coursesId String?
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Courses {
+  name  String  @unique
+  users Users[]
+
+  @@map("courses")
+}
