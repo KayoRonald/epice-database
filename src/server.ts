@@ -1,7 +1,7 @@
-import 'dotenv/config'
 import chalk from 'chalk'
-import app from './modules/shared/app'
+import app from './modules/shared/http/app'
 import config from './config/'
+console.clear()
 
 app.listen(config.app.port, () => {
   console.log(

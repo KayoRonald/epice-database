@@ -1,15 +1,11 @@
 import { Request, Response } from 'express'
-import { NotFoundException } from '../../../middleware/error/AppError'
-import { listUserEpice } from '../../services'
+import { prisma } from '../../../prisma/prisma.service'
 
 export class ListServiceUserController {
   async handle (req: Request, res: Response) {
-    const result = await listUserEpice.execute()
-    if (String(result).length) {
-      return res.status(201).json({
-        message: result
-      })
-    }
-    throw new NotFoundException('Nenhum palestrante foi regisrtado :/')
+    const list = await prisma.users.findMany()
+    return res.status(201).json({
+      message: list.length ? 'sim' : 'não'
+    })
   }
 }
