@@ -4,6 +4,8 @@
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "CoenraadS.bracket-pair-colorizer"
+    "CoenraadS.bracket-pair-colorizer",
+    "prisma.prisma",
+    "prisma.prisma-insider",
   ]
 }

@@ -9,18 +9,17 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "type-check": "tsc --noEmit",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
+    "type-check": "tsc --noEmit"
   },
   "keywords": [
     "crud",
-    "Knexjs",
+    "Prismsa",
     "epice"
   ],
   "author": "KayoRoanld",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^4.3.0",
     "chalk": "4.1.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -29,10 +28,7 @@
     "express-async-errors": "^3.1.1",
     "express-basic-auth": "^1.2.1",
     "helmet": "^5.1.0",
-    "knex": "^2.1.0",
-    "mysql": "^2.18.1",
-    "pg": "^8.7.3",
-    "sqlite3": "^5.0.8",
+    "prisma": "^4.3.0",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0",
     "yup": "^0.32.11"

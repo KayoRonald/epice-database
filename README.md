@@ -9,7 +9,7 @@ Esse projeto foi feito utilizando as seguintes tecnologias:
 | Tecnologias | Sites                           |
 | ----------- | ------------------------------- |
 | Nodejs      | https://nodejs.org/             |
-| Knex        | http://knexjs.org/              |
+| Prisma      | http://prisma.io/               |
 | TypeScript  | https://www.typescriptlang.org/ |
 
 ## Deploy
@@ -83,13 +83,10 @@ npm install
 > Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
 ```.env
-MYSQL_HOST=
-MYSQL_DATABASE=
-MYSQL_USER=
-MYSQL_PASSWORD=
-POSTGRES_URL=
+DATABASE_URL
 NODE_ENV=development
 ```
+Para realizar teste pode ser feita usando `DATABASE_URL="file:database.sqlite"`
 
 Tabela de descrição sobre `NODE_ENV`
 
@@ -102,19 +99,11 @@ Tabela de descrição sobre `NODE_ENV`
 **5. Rodar a migração para criar as tabelas**
 
 ```bash
-yarn knex migrate:latest
+yarn prisma migrate dev
 ```
-Comando para deletar o banco de dados
+Para produção
 ```bash
-yarn knex migrate:rollback
-```
-
-**6. Rodar o seed:run (opcional)**
-
-Semelhante às migrações, o módulo knex nos permite criar scripts para inserir dados iniciais em nossas tabelas chamadas de arquivos de semente!
-
-```bash
-yarn knex seed:run
+yarn prisma db push
 ```
 
 **7. Inicar nossa aplicação**
