@@ -8,15 +8,30 @@ generator client {
 }
 
 model Admin {
-  id         String   @id @default(uuid())
-  name       String
-  email      String
-  password   String
-  role       String     @default("admin")
+  id        String      @id @default(uuid())
+  name      String
+  email     String
+  password  String
+  role      String      @default("admin")
+  Changelog Changelog[]
+
   created_at DateTime @default(now())
   update_at  DateTime @updatedAt
 
   @@map("admin")
+}
+
+model Changelog {
+  id      String  @id @default(uuid())
+  title   String
+  content String?
+  adminId String
+  Admin   Admin   @relation(fields: [adminId], references: [id])
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+
+  @@map("changelog")
 }
 
 model Speakers {
@@ -37,10 +52,9 @@ model Speakers {
 }
 
 model Users {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
-
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
   Courses   Courses? @relation(fields: [coursesId], references: [name])
   coursesId String?
 
