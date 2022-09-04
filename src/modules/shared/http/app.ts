@@ -5,8 +5,8 @@ import helmet from 'helmet'
 import swaggerUi from 'swagger-ui-express'
 import routes from '../routes/routes'
 import swaggerDocs from '../../../docs/swagger.json'
-import { NotFoundException } from '../../../middleware/error/AppError'
-import errorHandler from '../../../middleware/handler/handler'
+import { NotFoundException } from '../../../common/exceptions'
+import errorHandler from '../../../middleware/error/handler'
 const app = express()
 
 app.use(cors())
