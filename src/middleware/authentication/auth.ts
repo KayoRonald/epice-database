@@ -7,7 +7,6 @@ import env from '../../config/env'
 const authMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) => {
   if (env.disableAuth) return next()
   const [, token]: any = req.headers.authorization?.split(' ')
-  console.log(token)
   if (!token) {
     throw new Authorized('Sessão expirada')
   }
@@ -17,7 +16,7 @@ const authMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) =
     console.log(payload)
     next()
   } catch (error: any) {
-
+    console.log(error)
   }
 }
 
