@@ -48,7 +48,6 @@ Esse projeto foi feito utilizando as seguintes tecnologias:
   
 </blockquote>
 
-
 <br/>
 
 **1. Faça um clone do repositório:**
@@ -83,7 +82,7 @@ npm install
 > Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
 ```.env
-DATABASE_URL
+DATABASE_URL=""
 NODE_ENV=development
 ```
 Para realizar teste pode ser feita usando `DATABASE_URL="file:database.sqlite"`
