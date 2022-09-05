@@ -6,7 +6,7 @@ export default {
     port: process.env.PORT || 3333
   },
   db: {
-    host: process.env.DATABASE_HOST
+    databaseURL: process.env.DATABASE_HOST
   },
   environment:
     process.env.NODE_ENV,
