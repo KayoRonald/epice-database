@@ -1,6 +1,6 @@
 import { AnySchema } from 'yup'
 import { Response, NextFunction } from 'express'
-import { IUSerRequest } from '../../types'
+import { IUSerRequest } from '../../@types'
 import { BadRequestException } from '../../common/exceptions'
 
 const validate =

@@ -27,3 +27,20 @@ export interface User {
   email: string;
   curso: string;
 }
+
+export interface IAdmin {
+  id: number
+  name: string
+  email: string
+  role: 'admin'
+  iat: number
+  exp: number
+}
+
+// Interfaces de requisições
+export interface IRequestAdmin extends Request {
+  user?: IAdmin
+  params: {
+    id?: string
+  }
+}
