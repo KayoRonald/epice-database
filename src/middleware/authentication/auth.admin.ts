@@ -2,6 +2,7 @@ import { NextFunction, Response } from 'express'
 import { IRequestAdmin } from '../../@types'
 import { Authorized, Forbidden } from '../../common/exceptions'
 import env from '../../config/env'
+import Logger from '../../config/logger'
 
 const adminMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) => {
   if (env.disableAuth) return next()
@@ -11,7 +12,7 @@ const adminMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) 
     )
   }
   if (req.user.role === 'admin') return next()
-  console.log(req.user.role)
+  Logger.info(req.user.role)
   throw new Forbidden('Você não tem autorização para acessar esta página')
 }
 

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import { IRequestAdmin } from '../../@types'
 import { Authorized } from '../../common/exceptions'
 import env from '../../config/env'
+import Logger from '../../config/logger'
 
 const authMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) => {
   if (env.disableAuth) return next()
@@ -13,10 +14,10 @@ const authMiddleware = (req: IRequestAdmin, res: Response, next: NextFunction) =
   try {
     const payload: any = jwt.verify(String(token), String(env.jwtSecret))
     req.user = payload
-    console.log(payload)
+    Logger.info(payload)
     next()
   } catch (error: any) {
-    console.log(error)
+    Logger.error(error)
   }
 }
 

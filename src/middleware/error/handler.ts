@@ -1,6 +1,6 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
-import Chalk from 'chalk'
 import HttpException from '../../common/exceptions/http.exception'
+import Logger from '../../config/logger'
 
 const errorHandler: ErrorRequestHandler = (
   error: Error,
@@ -15,7 +15,7 @@ const errorHandler: ErrorRequestHandler = (
     })
   }
   // eslint-disable-next-line
-  console.error(Chalk.red(error))
+  Logger.error(error.message)
   return response.status(500).json({
     status: 'error',
     message: 'Internal server error'

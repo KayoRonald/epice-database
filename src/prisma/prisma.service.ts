@@ -1,7 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 import * as bcrypt from 'bcrypt'
+import Logger from '../config/logger'
 
-export const prisma = new PrismaClient()
+export const prisma = new PrismaClient({
+  log: ['query', 'info', 'warn', 'error']
+})
 
 // Middleware Prisma hash
 prisma.$use(async (params, next) => {
@@ -14,10 +17,10 @@ prisma.$use(async (params, next) => {
 
 const bug = async () => {
   try {
-    console.log('Conectando ao banco de dados')
+    Logger.info('Conectando ao banco de dados')
     await prisma.$connect()
   } catch (error) {
-    console.log('Falha ao conectar:\n', error)
+    Logger.error('Falha ao conectar:\n', error)
     await prisma.$disconnect()
   }
 }
